@@ -27,12 +27,12 @@ public class Aluno {
 	private String ra;
 	
 	@JoinColumn(name = "fk_usuario")
-	//@JsonView({View.All.class, View.Alternative.class})
+	@JsonView({View.All.class, View.Alternative.class})
 	private Usuario usuario;
 	
 	@JoinColumn(name = "fk_matricula")
-	//@JsonView({View.All.class, View.Alternative.class})
-	private Matricula matricula;
+	@JsonView({View.All.class, View.Alternative.class})
+	private Inscrito inscrito;
 
 	public Long getId() {
 		return id;
@@ -58,12 +58,12 @@ public class Aluno {
 		this.usuario = usuario;
 	}
 
-	public Matricula getMatricula() {
-		return matricula;
+	public Inscrito getInscrito() {
+		return inscrito;
 	}
 
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
+	public void setInscrito(Inscrito inscrito) {
+		this.inscrito = inscrito;
 	}
 	
 	

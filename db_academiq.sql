@@ -39,9 +39,10 @@ CREATE TABLE academiq.professor
 	fk_instituicao integer NOT NULL references instituicao(id)
 );
 
-CREATE TABLE academiq.matricula
+CREATE TABLE academiq.inscrito
 (
 	id int AUTO_INCREMENT primary key,
+	data date,
 	fk_professor int references professor(id),
 	fk_disciplina int references disciplina(id)
 );

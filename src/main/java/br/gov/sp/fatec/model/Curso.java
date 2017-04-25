@@ -29,9 +29,7 @@ public class Curso {
 	@JsonView({View.All.class,View.Alternative.class})
 	private String sigla;
 	
-	@JoinColumn(name="fk_instituição")
-	//@JsonView({View.All.class,View.Alternative.class})
-	private Instituicao instituicao;
+	
 
 	public Long getId() {
 		return id;
@@ -57,13 +55,7 @@ public class Curso {
 		this.sigla = sigla;
 	}
 
-	public Instituicao getInstituicao() {
-		return instituicao;
-	}
-
-	public void setInstituicao(Instituicao instituicao) {
-		this.instituicao = instituicao;
-	}
+	
 	
 	
 
