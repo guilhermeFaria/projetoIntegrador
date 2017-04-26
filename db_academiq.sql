@@ -10,19 +10,18 @@ CREATE TABLE academiq.usuario
 	status boolean
 );
 
-CREATE TABLE academiq.instituicao
-(
-	id int AUTO_INCREMENT primary key,
-	nome varchar(70) NOT NULL,
-	cnpj varchar(18) NOT NULL
-);
+-- CREATE TABLE academiq.instituicao
+-- (
+-- 	id int AUTO_INCREMENT primary key,
+-- 	nome varchar(70) NOT NULL,
+-- 	cnpj varchar(18) NOT NULL
+-- );
 
 CREATE TABLE academiq.curso
 (
 	id int AUTO_INCREMENT primary key,
 	nome varchar(50),
-	sigla varchar(10),
-	fk_instituicao int references instituicao(id)
+	sigla varchar(10)
 );
 
 CREATE TABLE academiq.disciplina
@@ -35,8 +34,7 @@ CREATE TABLE academiq.disciplina
 CREATE TABLE academiq.professor
 (
 	id int AUTO_INCREMENT primary key,
-	fk_usuario integer NOT NULL references usuario(id),
-	fk_instituicao integer NOT NULL references instituicao(id)
+	fk_usuario integer NOT NULL references usuario(id)
 );
 
 CREATE TABLE academiq.inscrito
@@ -52,7 +50,7 @@ CREATE TABLE academiq.aluno
 	id int AUTO_INCREMENT primary key,
 	ra varchar(25),
 	fk_usuario int references usuario(id),
-	fk_matricula int references matricula(id)
+	fk_inscrito int references inscrito(id)
 );
 
 CREATE TABLE academiq.aula
