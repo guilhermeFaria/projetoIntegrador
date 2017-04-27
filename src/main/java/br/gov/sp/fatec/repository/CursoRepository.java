@@ -9,5 +9,6 @@ import br.gov.sp.fatec.model.Curso;
 public interface CursoRepository extends CrudRepository<Curso, Long> {
 	
 	public List<Curso> findAll();
+	public Curso findById(Long id);
 
 }
