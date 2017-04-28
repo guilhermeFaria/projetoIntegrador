@@ -24,9 +24,9 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 	}
 
 	@Transactional
-	public void salvar(Disciplina disciplina) {
+	public Disciplina salvar(Disciplina disciplina) {
 		// TODO Auto-generated method stub
-		disciplinaRepo.save(disciplina);
+		return disciplinaRepo.save(disciplina);
 
 	}
 

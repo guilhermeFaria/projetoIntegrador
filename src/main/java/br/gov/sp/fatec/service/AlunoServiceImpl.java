@@ -32,8 +32,8 @@ public class AlunoServiceImpl implements AlunoService {
 	
 
 	@Transactional
-	public void salvar(Aluno aluno) {
-		alunoRepo.save(aluno);
+	public Aluno salvar(Aluno aluno) {
+		return alunoRepo.save(aluno);
 
 	}
 

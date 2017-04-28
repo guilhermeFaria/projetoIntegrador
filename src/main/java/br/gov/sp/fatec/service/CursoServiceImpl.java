@@ -26,8 +26,8 @@ public class CursoServiceImpl implements CursoService {
 	}
 
 	@Transactional
-	public void salvar(Curso curso) {
-		cursoRepo.save(curso);
+	public Curso salvar(Curso curso) {
+		return cursoRepo.save(curso);
 
 	}
 

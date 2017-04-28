@@ -24,8 +24,8 @@ public class PresencaServiceImpl implements PresencaService {
 	}
 
 	@Transactional
-	public void salvar(Presenca presenca) {
-		presencaRepo.save(presenca);
+	public Presenca salvar(Presenca presenca) {
+		return presencaRepo.save(presenca);
 
 	}
 

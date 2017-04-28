@@ -27,9 +27,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Transactional
-	public void salvar(Usuario usuario) {
+	public Usuario salvar(Usuario usuario) {
 		// TODO Auto-generated method stub
-		usuarioRepo.save(usuario);
+		return usuarioRepo.save(usuario);
 		
 	}
 	

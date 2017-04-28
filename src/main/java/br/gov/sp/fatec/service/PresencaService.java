@@ -7,6 +7,6 @@ import br.gov.sp.fatec.model.Presenca;
 public interface PresencaService {
 	public Presenca buscar(Long id);
 	public List<Presenca> buscarTodos();
-	public void salvar(Presenca presenca);
+	public Presenca salvar(Presenca presenca);
 
 }

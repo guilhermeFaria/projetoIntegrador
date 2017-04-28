@@ -26,9 +26,9 @@ public class ProfessorServiceImpl implements ProfessorService{
 	}
 
 	@Transactional
-	public void salvar(Professor professor) {
+	public Professor salvar(Professor professor) {
 		// TODO Auto-generated method stub
-		profRepo.save(professor);
+		return profRepo.save(professor);
 		
 	}
 

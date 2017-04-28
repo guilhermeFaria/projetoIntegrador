@@ -24,8 +24,8 @@ public class InscritoServiceImpl implements InscritoService {
 	}
 	
 	@Transactional
-	public void salvar(Inscrito inscrito) {
-		inscritoRepo.save(inscrito);
+	public Inscrito salvar(Inscrito inscrito) {
+		return inscritoRepo.save(inscrito);
 	}
 
 }

@@ -8,5 +8,5 @@ public interface InscritoService {
 
 	public Inscrito buscar(Long id);
 	public List<Inscrito> buscarTodos();
-	public void salvar(Inscrito inscrito);
+	public Inscrito salvar(Inscrito inscrito);
 }

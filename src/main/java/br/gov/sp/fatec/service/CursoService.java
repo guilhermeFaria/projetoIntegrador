@@ -8,5 +8,5 @@ public interface CursoService {
 
 	public Curso buscar(Long id);
 	public List<Curso> buscarTodos();
-	public void salvar(Curso curso);
+	public Curso salvar(Curso curso);
 }

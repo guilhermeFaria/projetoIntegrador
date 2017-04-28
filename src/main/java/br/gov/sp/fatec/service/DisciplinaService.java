@@ -7,6 +7,6 @@ import br.gov.sp.fatec.model.Disciplina;
 public interface DisciplinaService {
 	public Disciplina buscar(Long id);
 	public List<Disciplina> buscarTodos();
-	public void salvar(Disciplina disciplina);
+	public Disciplina salvar(Disciplina disciplina);
 
 }

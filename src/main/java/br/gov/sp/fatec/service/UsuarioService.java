@@ -7,6 +7,6 @@ import br.gov.sp.fatec.model.Usuario;
 public interface UsuarioService {
 	public Usuario buscar(String login, String senha);
 	public List<Usuario> buscarTodos();
-	public void salvar(Usuario usuario);
+	public Usuario salvar(Usuario usuario);
 
 }

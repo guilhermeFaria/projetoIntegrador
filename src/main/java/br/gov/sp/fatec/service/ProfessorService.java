@@ -7,6 +7,6 @@ import br.gov.sp.fatec.model.Professor;
 public interface ProfessorService {
 	public Professor buscar(Long id);
 	public List<Professor> buscarTodos();
-	public void salvar(Professor professor);
+	public Professor salvar(Professor professor);
 
 }

@@ -26,8 +26,8 @@ public class AulaServiceImpl implements AulaService{
 	}
 
 	@Transactional
-	public void salvar(Aula aula) {
-		aulaRepo.save(aula);
+	public Aula salvar(Aula aula) {
+		return aulaRepo.save(aula);
 	}
 
 }
