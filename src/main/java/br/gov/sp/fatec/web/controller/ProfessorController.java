@@ -22,7 +22,7 @@ import br.gov.sp.fatec.service.ProfessorService;
 import br.gov.sp.fatec.view.View;
 
 @RestController
-@RequestMapping(value = "/presenca")
+@RequestMapping(value = "/professor")
 public class ProfessorController {
 	
 	@Autowired

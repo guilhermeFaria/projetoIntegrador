@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import br.gov.sp.fatec.view.View;
@@ -25,11 +26,11 @@ public class Usuario {
 	@Column(name = "nome")
 	private String nome;
 	
-	//@JsonView({View.All.class,View.Alternative.class})
+	@JsonIgnore
 	@Column(name = "login")
 	private String login;
 	
-	//@JsonView({View.All.class,View.Alternative.class})
+	@JsonIgnore
 	@Column(name = "senha")
 	private String senha;
 	

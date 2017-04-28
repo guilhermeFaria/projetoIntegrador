@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -26,11 +27,13 @@ public class Aluno {
 	@JsonView({View.All.class, View.Alternative.class})
 	private String ra;
 	
+	@OneToOne
 	@JoinColumn(name = "fk_usuario")
 	@JsonView({View.All.class, View.Alternative.class})
 	private Usuario usuario;
 	
-	@JoinColumn(name = "fk_matricula")
+	@OneToOne
+	@JoinColumn(name = "fk_inscrito")
 	@JsonView({View.All.class, View.Alternative.class})
 	private Inscrito inscrito;
 

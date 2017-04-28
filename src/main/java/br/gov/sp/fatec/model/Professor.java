@@ -22,7 +22,7 @@ public class Professor {
 	@Column(name = "id")
 	private Long id;
 	
-	@JsonView({View.All.class, View.Alternative.class})
+	@JsonView({View.Alternative.class})
 	@OneToOne
 	@JoinColumn(name = "fk_usuario")
 	private Usuario usuario;
