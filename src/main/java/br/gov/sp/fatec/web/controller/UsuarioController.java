@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.web.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import br.gov.sp.fatec.model.Usuario;
+import br.gov.sp.fatec.security.CriptografarSenha;
 import br.gov.sp.fatec.service.UsuarioService;
 import br.gov.sp.fatec.view.View;
 
@@ -46,29 +50,23 @@ public class UsuarioController {
 		return new ResponseEntity<Collection<Usuario>>(usuarioService.buscarTodos(),HttpStatus.OK);
 	}
 	
-	
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void save(@RequestBody Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String save(@RequestBody Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("1");
+		System.out.println("2");
+		System.out.println(usuario.getSenha());
+		String senhaCripto = CriptografarSenha.criptografar(usuario.getSenha());
+		System.out.println("3");
+		usuario.setSenha(senhaCripto);
+		
+		
 		usuario = usuarioService.salvar(usuario);
 		//response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/usuario/getById?id=" + usuario.getId());
-		//return usuario;
+		return "OKAY";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	@JsonView(View.All.class)
-	@ResponseStatus(HttpStatus.CREATED)
-	public void login(@RequestParam(value = "login") String login, @RequestParam(value ="senha") String senha, HttpServletRequest request, HttpServletResponse response) {
-		Usuario usuario = usuarioService.buscar(login, senha);
-		if(usuario !=null)
-		{
-			//Redireciona para pagina principal
-		}
-		else{
-			//Redireciona para página de login
-		}
-		//response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/usuario/getById?id=" + usuario.getId());
-		//return usuario;
-	}
+	
 }

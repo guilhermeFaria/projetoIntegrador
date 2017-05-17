@@ -1,14 +1,34 @@
 drop schema if exists academiq;
 CREATE SCHEMA academiq DEFAULT CHARACTER SET utf8;
 
+CREATE TABLE academiq.autorizacao(
+	id int unsigned auto_increment PRIMARY KEY ,
+    autorizacao varchar(50) unique
+);
+
+insert into academiq.autorizacao(autorizacao) values ('ROLE_ADMIN');
+insert into academiq.autorizacao(autorizacao) values ('ROLE_PROF');
+insert into academiq.autorizacao(autorizacao) values ('ROLE_ALUNO');
+
 CREATE TABLE academiq.usuario
 (
 	id int AUTO_INCREMENT primary key,
 	nome varchar(70) NOT NULL,
-	login varchar(50) NOT NULL,
-	senha varchar(50) NOT NULL,
+	login varchar(50) NOT NULL unique,
+	senha varchar(256) NOT NULL,
 	status boolean
 );
+
+insert into academiq.usuario values (1,'Admin','admin',SHA2('admin',256),true);
+
+
+CREATE TABLE academiq.usuario_autorizacao(
+    fk_usuario int references academiq.usuario(id),
+    fk_autorizacao int references academiq.autoricacao(id),
+    primary key(fk_usuario,fk_autorizacao)
+);
+
+insert into academiq.usuario_autorizacao values (1,1);
 
 -- CREATE TABLE academiq.instituicao
 -- (
