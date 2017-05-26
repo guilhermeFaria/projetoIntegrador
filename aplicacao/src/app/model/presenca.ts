@@ -1,8 +1,11 @@
 import { Aluno } from './aluno';
-import { Aula } from './aula';
+import { Professor } from './professor';
+import { Disciplina } from './disciplina';
 
 export class Presenca {
     id: number;
+    data: Date;
     aluno: Aluno = new Aluno();
-    aula: Aula = new Aula();
+    professor: Professor = new Professor();
+    disciplina: Disciplina = new Disciplina();
 }
