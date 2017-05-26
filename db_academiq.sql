@@ -57,20 +57,11 @@ CREATE TABLE academiq.professor
 	fk_usuario integer NOT NULL references usuario(id)
 );
 
-CREATE TABLE academiq.inscrito
-(
-	id int AUTO_INCREMENT primary key,
-	data date,
-	fk_professor int references professor(id),
-	fk_disciplina int references disciplina(id)
-);
-
 CREATE TABLE academiq.aluno
 (
 	id int AUTO_INCREMENT primary key,
 	ra varchar(25),
-	fk_usuario int references usuario(id),
-	fk_inscrito int references inscrito(id)
+	fk_usuario int references usuario(id)
 );
 
 CREATE TABLE academiq.aula
