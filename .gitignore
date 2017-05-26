@@ -2,3 +2,8 @@
 /target/
 
 *.prefs
+*.settings
+*.classpath
+*.project
+
+web-service/.settings/.jsdtscope
