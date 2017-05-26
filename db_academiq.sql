@@ -64,17 +64,11 @@ CREATE TABLE academiq.aluno
 	fk_usuario int references usuario(id)
 );
 
-CREATE TABLE academiq.aula
-(
-	id int AUTO_INCREMENT primary key,
-	data date,
-	fk_professor int references professor(id),
-	fk_disciplina int references disciplina(id)
-);
-
 CREATE TABLE academiq.presenca
 (
 	id int AUTO_INCREMENT primary key,
+	data date,
 	fk_aluno int references aluno(id),
-	fk_aula int references aula(id)
+	fk_professor int references professor(id),
+	fk_disciplina int references disciplina(id)
 );
