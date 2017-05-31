@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes  }  from '@angular/router';
+import 'rxjs/add/operator/map';
+
+import { LoginModule } from './login/login.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,7 +23,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     Erro404Component,
     ListaPresencaComponent,
     DisciplinaComponent
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    LoginModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
