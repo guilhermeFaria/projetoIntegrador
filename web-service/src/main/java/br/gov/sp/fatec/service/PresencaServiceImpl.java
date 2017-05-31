@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.gov.sp.fatec.model.Aluno;
 import br.gov.sp.fatec.model.Presenca;
 import br.gov.sp.fatec.repository.PresencaRepository;
 
@@ -27,6 +28,11 @@ public class PresencaServiceImpl implements PresencaService {
 	public Presenca salvar(Presenca presenca) {
 		return presencaRepo.save(presenca);
 
+	}
+
+	public List<Aluno> buscarPorDisciplina(Long id) {
+		// TODO Auto-generated method stub
+		return presencaRepo.findAlunosByDisciplina(id);
 	}
 
 }

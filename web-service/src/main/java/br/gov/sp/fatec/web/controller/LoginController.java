@@ -21,14 +21,18 @@ import br.gov.sp.fatec.security.JwtUtils;
 import br.gov.sp.fatec.security.Login;
 
 @RestController
-@RequestMapping(value = "/login")
+
 public class LoginController {
 	
 	@Autowired
     @Qualifier("authenticationManager")
     private AuthenticationManager auth;
 	
-	@RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/")
+	public String hello(){
+		return "COÉ RAPAZIADA";
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public Usuario login(@RequestBody Login login, HttpServletResponse response) throws JsonProcessingException {
         Authentication credentials = new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
         Usuario usuario = (Usuario) auth.authenticate(credentials).getPrincipal();

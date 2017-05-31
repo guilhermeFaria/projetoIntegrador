@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.web.controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,15 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import br.gov.sp.fatec.model.Aluno;
 import br.gov.sp.fatec.model.Presenca;
 import br.gov.sp.fatec.service.PresencaService;
 import br.gov.sp.fatec.view.View;
@@ -29,8 +31,8 @@ public class PresencaController {
 	@Autowired
 	private PresencaService presencaService;
 	
-	@RequestMapping(value = "/getById")
-	public ResponseEntity<Presenca> get(@RequestParam(value="id",defaultValue="1") Long id){
+	@RequestMapping(value = "/get/{id}")
+	public ResponseEntity<Presenca> get(@PathVariable(value="id") Long id){
 		Presenca presenca = presencaService.buscar(id);
 		if(presenca == null){
 			return new ResponseEntity<Presenca>(HttpStatus.NOT_FOUND);
@@ -39,7 +41,7 @@ public class PresencaController {
 	
 	}
 	
-	@RequestMapping(value = "/getAll")
+	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Presenca>> getAll(){
 		return new ResponseEntity<Collection<Presenca>>(presencaService.buscarTodos(),HttpStatus.OK);
 	}
@@ -52,6 +54,17 @@ public class PresencaController {
 		presenca = presencaService.salvar(presenca);
 		response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/presenca/getById?id=" + presenca.getId());
 		return presenca;
+	}
+	
+	
+	@RequestMapping(value = "/get/alunos/{id}")
+	public ResponseEntity<Collection<Aluno>> getAlunos(@PathVariable(value="id") Long id){
+		List<Aluno> alunos = presencaService.buscarPorDisciplina(id);
+		if(alunos == null){
+			return new ResponseEntity<Collection<Aluno>>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Collection<Aluno>>(alunos,HttpStatus.OK);
+	
 	}
 
 

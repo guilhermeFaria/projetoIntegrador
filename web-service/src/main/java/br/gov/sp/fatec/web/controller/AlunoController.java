@@ -37,8 +37,8 @@ public class AlunoController {
 		
 	}
 	
-	@RequestMapping(value = "/getById")
-	public ResponseEntity<Aluno> get(@RequestParam(value="id",defaultValue="1") Long id){
+	@RequestMapping(value = "/get/{id}")
+	public ResponseEntity<Aluno> get(@PathVariable(value="id") Long id){
 		Aluno aluno = alunoService.buscar(id);
 		if(aluno == null){
 			return new ResponseEntity<Aluno>(HttpStatus.NOT_FOUND);
@@ -47,7 +47,7 @@ public class AlunoController {
 	
 	}
 	
-	@RequestMapping(value = "/getAll")
+	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Aluno>> getAll(){
 		return new ResponseEntity<Collection<Aluno>>(alunoService.buscarTodos(),HttpStatus.OK);
 	}

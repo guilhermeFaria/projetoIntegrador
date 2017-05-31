@@ -1,3 +1,4 @@
+
 drop schema if exists academiq;
 CREATE SCHEMA academiq DEFAULT CHARACTER SET utf8;
 
@@ -30,12 +31,7 @@ CREATE TABLE academiq.usuario_autorizacao(
 
 insert into academiq.usuario_autorizacao values (1,1);
 
--- CREATE TABLE academiq.instituicao
--- (
--- 	id int AUTO_INCREMENT primary key,
--- 	nome varchar(70) NOT NULL,
--- 	cnpj varchar(18) NOT NULL
--- );
+
 
 CREATE TABLE academiq.curso
 (
@@ -48,6 +44,7 @@ CREATE TABLE academiq.disciplina
 (
 	id int AUTO_INCREMENT primary key,
 	nome varchar(50),
+    fk_professor int references professor(id),
 	fk_curso int  NOT NULL references curso(id)
 );
 
@@ -69,6 +66,5 @@ CREATE TABLE academiq.presenca
 	id int AUTO_INCREMENT primary key,
 	data date,
 	fk_aluno int references aluno(id),
-	fk_professor int references professor(id),
 	fk_disciplina int references disciplina(id)
 );

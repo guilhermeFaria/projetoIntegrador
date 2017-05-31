@@ -31,11 +31,7 @@ public class Aluno {
 	@JoinColumn(name = "fk_usuario")
 	@JsonView({View.All.class, View.Alternative.class})
 	private Usuario usuario;
-	
-	@OneToOne
-	@JoinColumn(name = "fk_inscrito")
-	@JsonView({View.All.class, View.Alternative.class})
-	private Inscrito inscrito;
+
 
 	public Long getId() {
 		return id;
@@ -61,13 +57,7 @@ public class Aluno {
 		this.usuario = usuario;
 	}
 
-	public Inscrito getInscrito() {
-		return inscrito;
-	}
-
-	public void setInscrito(Inscrito inscrito) {
-		this.inscrito = inscrito;
-	}
+	
 	
 	
 }

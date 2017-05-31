@@ -27,10 +27,11 @@ public class Presenca {
 	@JsonView({View.All.class, View.Alternative.class})
 	private Aluno aluno;
 	
+	
 	@OneToOne
-	@JoinColumn(name = "fk_aula")
+	@JoinColumn(name = "fk_disciplina")
 	@JsonView({View.All.class, View.Alternative.class})
-	private Aula aula;
+	private Disciplina disciplina;
 
 	public Long getId() {
 		return id;
@@ -48,14 +49,7 @@ public class Presenca {
 		this.aluno = aluno;
 	}
 
-	public Aula getAula() {
-		return aula;
-	}
 
-	public void setAula(Aula aula) {
-		this.aula = aula;
-	}
-	
 	
 
 }

@@ -8,5 +8,6 @@ public interface DisciplinaService {
 	public Disciplina buscar(Long id);
 	public List<Disciplina> buscarTodos();
 	public Disciplina salvar(Disciplina disciplina);
+	public List<Disciplina> buscarPorProfessor(Long id);
 
 }

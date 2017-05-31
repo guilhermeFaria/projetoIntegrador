@@ -30,4 +30,9 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 
 	}
 
+	public List<Disciplina> buscarPorProfessor(Long id) {
+		// TODO Auto-generated method stub
+		return disciplinaRepo.findByProfessor(id);
+	}
+
 }

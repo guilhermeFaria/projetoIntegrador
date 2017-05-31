@@ -23,13 +23,17 @@ public class Disciplina {
 	private Long id;
 	
 	@Column(name = "nome")
-	//@JsonView({View.All.class,View.Alternative.class})
+	@JsonView({View.All.class,View.Alternative.class})
 	private String nome;
 	
 	@OneToOne
 	@JoinColumn(name = "fk_curso")
-	//@JsonView({View.All.class,View.Alternative.class})
+	@JsonView({View.All.class,View.Alternative.class})
 	private Curso curso;
+	
+	@OneToOne
+	@JoinColumn(name = "fk_professor")
+	private Professor professor;
 
 	public Long getId() {
 		return id;
@@ -55,6 +59,12 @@ public class Disciplina {
 		this.curso = curso;
 	}
 	
+	public Professor getProfessor(){
+		return professor;
+	}
 	
+	public void setProfessor(Professor professor){
+		this.professor = professor;
+	}
 
 }
