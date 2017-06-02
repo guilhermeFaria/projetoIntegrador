@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,8 +31,8 @@ public class CursoController {
 	private CursoService cursoService;
 	
 	
-	@RequestMapping(value = "/getById")
-	public ResponseEntity<Curso> get(@RequestParam(value="id",defaultValue="1") Long id){
+	@RequestMapping(value = "/get/{id}")
+	public ResponseEntity<Curso> get(@PathVariable(value="id") Long id){
 		Curso curso = cursoService.buscar(id);
 		if(curso == null){
 			return new ResponseEntity<Curso>(HttpStatus.NOT_FOUND);
@@ -40,7 +41,7 @@ public class CursoController {
 	
 	}
 	
-	@RequestMapping(value = "/getAll")
+	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Curso>> getAll(){
 		return new ResponseEntity<Collection<Curso>>(cursoService.buscarTodos(),HttpStatus.OK);
 	}

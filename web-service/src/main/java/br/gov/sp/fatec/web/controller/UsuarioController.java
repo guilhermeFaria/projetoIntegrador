@@ -45,7 +45,7 @@ public class UsuarioController {
 	
 	}*/
 	
-	@RequestMapping(value = "/getAll")
+	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Usuario>> getAll(){
 		return new ResponseEntity<Collection<Usuario>>(usuarioService.buscarTodos(),HttpStatus.OK);
 	}

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +29,8 @@ public class ProfessorController {
 	@Autowired
 	private ProfessorService professorService;
 	
-	@RequestMapping(value = "/getById")
-	public ResponseEntity<Professor> get(@RequestParam(value="id",defaultValue="1") Long id){
+	@RequestMapping(value = "/get/{id}")
+	public ResponseEntity<Professor> get(@PathVariable(value="id") Long id){
 		Professor professor = professorService.buscar(id);
 		if(professor == null){
 			return new ResponseEntity<Professor>(HttpStatus.NOT_FOUND);
@@ -38,7 +39,7 @@ public class ProfessorController {
 	
 	}
 	
-	@RequestMapping(value = "/getAll")
+	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Professor>> getAll(){
 		return new ResponseEntity<Collection<Professor>>(professorService.buscarTodos(),HttpStatus.OK);
 	}
