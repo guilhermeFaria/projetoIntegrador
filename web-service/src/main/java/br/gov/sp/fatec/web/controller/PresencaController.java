@@ -40,7 +40,7 @@ public class PresencaController {
 			
 
 		}
-		System.out.println("ola4");
+		
 		return new ResponseEntity<Presenca>(presenca,HttpStatus.OK);
 	
 	}
