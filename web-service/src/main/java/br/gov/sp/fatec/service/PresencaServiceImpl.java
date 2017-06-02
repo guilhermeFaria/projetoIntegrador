@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -19,9 +20,9 @@ public class PresencaServiceImpl implements PresencaService {
 		return presencaRepo.findById(id);
 	}
 
-	public List<Presenca> buscarTodos() {
+	public List<Presenca> buscarTodos(Long disciplina, Date data) {
 		// TODO Auto-generated method stub
-		return presencaRepo.findAll();
+		return presencaRepo.findAll(disciplina, data);
 	}
 
 	@Transactional

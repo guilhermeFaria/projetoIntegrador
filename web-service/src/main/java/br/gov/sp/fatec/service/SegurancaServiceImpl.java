@@ -17,7 +17,7 @@ public class SegurancaServiceImpl implements UserDetailsService {
 
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		Usuario usuario = usuarioRepo.findByLogin(login);
-		if(usuario == null) throw new UsernameNotFoundException("Usuario não encptrado, login: " + login );
+		if(usuario == null) throw new UsernameNotFoundException("Usuario nao encptrado, login: " + login );
 		return usuario;
 	}
 

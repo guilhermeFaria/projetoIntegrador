@@ -1,5 +1,6 @@
 package br.gov.sp.fatec.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,10 @@ public interface PresencaRepository extends CrudRepository<Presenca, Long>{
 	public List<Presenca> findAll();
 	public Presenca findById(Long id);
 	
-	@Query("select p.aluno from Presenca p where  p.disciplina.id=?1 ")
+	@Query("select p.aluno from Presenca p where  p.disciplina.id = ?1")
 	public List<Aluno> findAlunosByDisciplina(Long id);
-
+	
+	@Query("select p.aluno from Presenca p where p.disciplina = ?1 and p.data = ?2")
+	public List<Presenca> findAll(Long disciplina, Date data);
+	
 }

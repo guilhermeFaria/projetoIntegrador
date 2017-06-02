@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.web.controller;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,16 +35,16 @@ public class PresencaController {
 	@RequestMapping(value = "/get/{id}")
 	public ResponseEntity<Presenca> get(@PathVariable(value="id") Long id){
 		Presenca presenca = presencaService.buscar(id);
-		if(presenca == null){
+		if(presenca == null) {
 			return new ResponseEntity<Presenca>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Presenca>(presenca,HttpStatus.OK);
 	
 	}
 	
-	@RequestMapping(value = "/list")
-	public ResponseEntity<Collection<Presenca>> getAll(){
-		return new ResponseEntity<Collection<Presenca>>(presencaService.buscarTodos(),HttpStatus.OK);
+	@RequestMapping(value = "/list/{disciplina}/{data}")
+	public ResponseEntity<Collection<Presenca>> getAll(@PathVariable(value="disciplina") Long disciplina, @PathVariable(value="data") Date data){
+		return new ResponseEntity<Collection<Presenca>>(presencaService.buscarTodos(disciplina, data),HttpStatus.OK);
 	}
 	
 	

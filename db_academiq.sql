@@ -99,6 +99,7 @@ CREATE TABLE academiq.presenca
 (
 	id int AUTO_INCREMENT primary key,
 	data date,
+	presente boolean,
 	fk_aluno int references aluno(id),
 	fk_disciplina int references disciplina(id)
 );
