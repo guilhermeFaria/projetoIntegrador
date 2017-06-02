@@ -27,7 +27,7 @@ export class LoginComponent {
                   sessionStorage.removeItem('usuario');
                   sessionStorage.setItem('usuario', JSON.stringify(this.usuario));
                   if(this.usuario.autorizacoes[0].autorizacao == 'ROLE_ALUNO') {
-                	this.router.navigateByUrl('/presencas');
+                	  this.router.navigateByUrl('/presencas');
                   } else {
                     this.router.navigateByUrl('/disciplinas');
                   }

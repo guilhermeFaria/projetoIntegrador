@@ -11,6 +11,11 @@ export class LoginService {
   constructor(private webservice: Webservice) { }
   
   login(login: Login): Observable<Usuario> {
-		return this.webservice.post('login', JSON.stringify(login)).map(res => res.json());
+		return this.webservice.post('login', JSON.stringify(login)).map(res => {
+      sessionStorage.removeItem('token');
+      sessionStorage.setItem('token', res.headers.get("token"));
+      console.log(res.headers.get("token"));
+      return res.json();
+    });
 	}
 }
