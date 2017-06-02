@@ -2,6 +2,7 @@ package br.gov.sp.fatec.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import br.gov.sp.fatec.repository.DisciplinaRepository;
 @Service("disciplinaService")
 public class DisciplinaServiceImpl implements DisciplinaService {
 	
+	@Autowired
 	private DisciplinaRepository disciplinaRepo;
 
 	public Disciplina buscar(Long id) {

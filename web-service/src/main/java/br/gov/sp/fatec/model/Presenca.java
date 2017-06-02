@@ -24,9 +24,10 @@ public class Presenca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
+	@JsonView({View.All.class, View.Alternative.class})
 	private Long id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "data")	
 	@JsonView({View.All.class, View.Alternative.class})
 	private Date data;
@@ -41,6 +42,10 @@ public class Presenca {
 	@JoinColumn(name = "fk_disciplina")
 	@JsonView({View.All.class, View.Alternative.class})
 	private Disciplina disciplina;
+	
+	@Column(name = "presente")
+	@JsonView({View.All.class,View.Alternative.class})
+	private Boolean presente;
 
 	public Long getId() {
 		return id;

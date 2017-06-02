@@ -37,7 +37,10 @@ public class PresencaController {
 		Presenca presenca = presencaService.buscar(id);
 		if(presenca == null) {
 			return new ResponseEntity<Presenca>(HttpStatus.NOT_FOUND);
+			
+
 		}
+		System.out.println("ola4");
 		return new ResponseEntity<Presenca>(presenca,HttpStatus.OK);
 	
 	}

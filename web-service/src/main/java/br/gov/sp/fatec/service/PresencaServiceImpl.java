@@ -3,6 +3,7 @@ package br.gov.sp.fatec.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import br.gov.sp.fatec.repository.PresencaRepository;
 @Service("presencaService")
 public class PresencaServiceImpl implements PresencaService {
 	
+	@Autowired
 	private PresencaRepository presencaRepo;
 
 	public Presenca buscar(Long id) {
