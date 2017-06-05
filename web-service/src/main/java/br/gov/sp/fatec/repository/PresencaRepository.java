@@ -23,7 +23,7 @@ public interface PresencaRepository extends CrudRepository<Presenca, Long>{
 	@Query("select p.disciplina from Presenca p where p.aluno.id=?1")
 	public List<Disciplina> findAllDisciplinaByAluno(Long idAluno);
 	
-	@Query("select count(*) from Presenca p where p.aluno.id=?1 and p.disciplina.id=?2 and p.presenca=?3")
-	public Long countPresencasFaltas(Long idAluno,Long idDisciplina, boolean presenca);
+	@Query("select count(*) from Presenca p where p.aluno.id=?1 and p.disciplina.id=?2 and p.presente=?3")
+	public Long countPresencasFaltas(Long idAluno,Long idDisciplina, Boolean presenca);
 	
 }
