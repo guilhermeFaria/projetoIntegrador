@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers, Response, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -7,11 +7,13 @@ export class Webservice {
     _http: Http;
     _headers: Headers;
     _url: string = 'http://localhost:8080/projetoIntegrador/';
+    _token: string = '';
 
-    constructor(http: Http) {
+    constructor(http: Http, responseOptions: ResponseOptions) {
         this._http = http;
         this._headers = new Headers();
         this._headers.append('Content-Type', 'application/json');
+        this._headers.append('Authorization', sessionStorage.getItem('Authorization'));
     }
 
     getWebserviceUrl() {

@@ -80,4 +80,14 @@ public class Presenca {
 		this.disciplina = disciplina;
 	}
 
+	public Boolean getPresente() {
+		return presente;
+	}
+
+	public void setPresente(Boolean presente) {
+		this.presente = presente;
+	}
+	
+	
+
 }

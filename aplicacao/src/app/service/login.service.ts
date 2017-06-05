@@ -12,9 +12,8 @@ export class LoginService {
   
   login(login: Login): Observable<Usuario> {
 		return this.webservice.post('login', JSON.stringify(login)).map(res => {
-      sessionStorage.removeItem('token');
-      sessionStorage.setItem('token', res.headers.get("token"));
-      console.log(res.headers.get("token"));
+      sessionStorage.removeItem('Authorization');
+      sessionStorage.setItem('Authorization', res.headers.get('Token'));
       return res.json();
     });
 	}

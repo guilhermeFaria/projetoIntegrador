@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,11 +35,12 @@ public class LoginController {
 		return "COÉ RAPAZIADA";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Usuario login(@RequestBody Login login, HttpServletResponse response) throws JsonProcessingException {
+    public ResponseEntity<Usuario> login(@RequestBody Login login, HttpServletResponse response) throws JsonProcessingException {
         Authentication credentials = new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
         Usuario usuario = (Usuario) auth.authenticate(credentials).getPrincipal();
         usuario.setSenha(null);
-           response.setHeader("Token", JwtUtils.generateToken(usuario));
-           return usuario;
+        
+    	response.setHeader("Token", JwtUtils.generateToken(usuario));
+    	return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
 }

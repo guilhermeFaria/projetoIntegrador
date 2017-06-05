@@ -6,11 +6,11 @@
         <form action="#" method="post" accept-charset="utf-8" (submit)="logar($event)">
             <div class="row center-xs">
                 <div class="col-xs-12 center-xs">
-                    <input type="email" id="email" name="email" placeholder="email" [(ngModel)]="usuario.login"> 
+                    <input type="text" id="username" name="username" placeholder="email" [(ngModel)]="login.username"> 
                 </div>
                 
                  <div class="col-xs-12 center-xs">
-                    <input type="password" id="senha" name="senha" placeholder="Senha" [(ngModel)]="usuario.senha">
+                    <input type="password" id="password" name="password" placeholder="Senha" [(ngModel)]="login.password">
                 </div>
 
                 <div class="col-xs-12 center-xs">
