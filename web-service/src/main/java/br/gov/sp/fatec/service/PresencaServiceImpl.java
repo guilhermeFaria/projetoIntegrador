@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.gov.sp.fatec.model.Aluno;
+import br.gov.sp.fatec.model.Disciplina;
 import br.gov.sp.fatec.model.Presenca;
 import br.gov.sp.fatec.repository.PresencaRepository;
 
@@ -36,6 +37,16 @@ public class PresencaServiceImpl implements PresencaService {
 	public List<Aluno> buscarPorDisciplina(Long id) {
 		// TODO Auto-generated method stub
 		return presencaRepo.findAlunosByDisciplina(id);
+	}
+
+	public List<Disciplina> buscarDisciplinaPorAluno(Long idAluno) {
+		// TODO Auto-generated method stub
+		return presencaRepo.findAllDisciplinaByAluno(idAluno);
+	}
+
+	public Long qtdePresencaFalta(Long idAluno, Long idDisciplina, boolean presenca) {
+		// TODO Auto-generated method stub
+		return presencaRepo.countPresencasFaltas(idAluno, idDisciplina, presenca);
 	}
 
 }

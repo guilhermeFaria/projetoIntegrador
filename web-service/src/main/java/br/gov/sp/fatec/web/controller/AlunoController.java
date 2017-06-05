@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +29,7 @@ public class AlunoController {
 	
 	@Autowired
 	private AlunoService alunoService;
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/get/{nome}")
 	public ResponseEntity<Collection<Aluno>> buscarPorNome(@PathVariable("nome") String nome){
 		
@@ -38,6 +38,7 @@ public class AlunoController {
 	}
 	
 	@RequestMapping(value = "/get/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	public ResponseEntity<Aluno> get(@PathVariable(value="id") Long id){
 		Aluno aluno = alunoService.buscar(id);
 		if(aluno == null){
@@ -47,12 +48,13 @@ public class AlunoController {
 	
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Aluno>> getAll(){
 		return new ResponseEntity<Collection<Aluno>>(alunoService.buscarTodos(),HttpStatus.OK);
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)

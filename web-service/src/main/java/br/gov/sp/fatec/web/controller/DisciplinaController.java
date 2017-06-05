@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ public class DisciplinaController {
 	@Autowired
 	private DisciplinaService disciplinaService;
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/get/{id}")
 	public ResponseEntity<Disciplina> get(@PathVariable(value="id") Long id){
 		Disciplina disciplina = disciplinaService.buscar(id);
@@ -40,12 +42,13 @@ public class DisciplinaController {
 	
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Disciplina>> getAll(){
 		return new ResponseEntity<Collection<Disciplina>>(disciplinaService.buscarTodos(),HttpStatus.OK);
 	}
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -54,7 +57,7 @@ public class DisciplinaController {
 		response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/disciplina/getById?id=" + disciplina.getId());
 		return disciplina;
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/get/professor/{id}")
 	public ResponseEntity<Collection<Disciplina>> getDisciplina(@PathVariable(value="id") Long id){
 		List<Disciplina> disciplinas = disciplinaService.buscarPorProfessor(id);

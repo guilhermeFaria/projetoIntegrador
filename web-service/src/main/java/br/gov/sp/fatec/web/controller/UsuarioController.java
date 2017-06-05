@@ -1,7 +1,5 @@
 package br.gov.sp.fatec.web.controller;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,16 +41,16 @@ public class UsuarioController {
 		return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
 	
 	}*/
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Usuario>> getAll(){
 		return new ResponseEntity<Collection<Usuario>>(usuarioService.buscarTodos(),HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String save(@RequestBody Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("1");
 		System.out.println("2");

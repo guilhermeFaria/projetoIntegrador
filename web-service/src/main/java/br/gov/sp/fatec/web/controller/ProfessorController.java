@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +27,7 @@ public class ProfessorController {
 	
 	@Autowired
 	private ProfessorService professorService;
-	
+
 	@RequestMapping(value = "/get/{id}")
 	public ResponseEntity<Professor> get(@PathVariable(value="id") Long id){
 		Professor professor = professorService.buscar(id);
