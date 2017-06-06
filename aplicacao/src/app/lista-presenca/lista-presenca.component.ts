@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Presenca } from '../model/presenca';
+import { ListaPresencaService } from '../service/lista-presenca.service';
 
 @Component({
   selector: 'app-lista-presenca',
@@ -11,6 +12,8 @@ export class ListaPresencaComponent {
 
   presencas: Presenca[];
 
-  constructor() { }
+  constructor(private listaPresencaService: ListaPresencaService) {
+    listaPresencaService.listar(1, new Date()).subscribe(presencas => this.presencas = presencas);
+  }
 
 }

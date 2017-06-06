@@ -17,7 +17,6 @@ export class LoginComponent {
   constructor(private service: LoginService, private router: Router) {}
 
   logar(event) {
-    console.log(JSON.stringify(this.usuario));
       event.preventDefault();
       this.service
           .login(this.login)

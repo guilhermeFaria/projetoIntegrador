@@ -10,14 +10,11 @@ export class ListaPresencaService {
 
   constructor(private webservice: Webservice) {}
 
-    listar(status: boolean): Observable<Presenca[]>  {
+    listar(disciplina: number, data: Date): Observable<Presenca[]>  {
         let usuario: Usuario = JSON.parse(sessionStorage.getItem('usuario'));
-        let path: string ='lista-presenca/' + usuario.id;
+        let path: string ='presenca/list/' + disciplina + '/' + data.getMilliseconds;
 
-        if(status == null) return this.webservice.get(path)
-            .map(res => res.json());
-
-        return this.webservice.get(path + status)
+        return this.webservice.get(path)
             .map(res => res.json());
     }
   
