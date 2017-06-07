@@ -38,6 +38,16 @@ public class ProfessorController {
 	
 	}
 	
+	@RequestMapping(value = "/get/usuario/{id}")
+	public ResponseEntity<Professor> getByUser(@PathVariable(value="id") Long id){
+		Professor professor = professorService.buscarPorUsuario(id);
+		if(professor == null){
+			return new ResponseEntity<Professor>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Professor>(professor,HttpStatus.OK);
+	
+	}
+	
 	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Professor>> getAll(){
 		return new ResponseEntity<Collection<Professor>>(professorService.buscarTodos(),HttpStatus.OK);

@@ -1,3 +1,7 @@
-<p *ngFor="let p of presencas">
-  <span>{{ p.disciplina.nome }}</span>
-</p>
+
+<table *ngFor="let p of presencas">
+	<tr>
+		<td>{{ p.aluno.usuario.nome }}</td>
+		<td><input type="checkbox" [checked]="p.presente"></td>
+	</tr>
+</table>

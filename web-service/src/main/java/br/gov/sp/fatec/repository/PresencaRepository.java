@@ -17,7 +17,7 @@ public interface PresencaRepository extends CrudRepository<Presenca, Long>{
 	@Query("select p.aluno from Presenca p where  p.disciplina.id = ?1")
 	public List<Aluno> findAlunosByDisciplina(Long id);
 	
-	@Query("select p.aluno from Presenca p where p.disciplina.id = ?1 and p.data = ?2")
+	@Query("select p from Presenca p where p.disciplina.id = ?1 and p.data = ?2")
 	public List<Presenca> findAll(Long idDisciplina, Date data);
 	
 	@Query("select p.disciplina from Presenca p where p.aluno.id=?1")

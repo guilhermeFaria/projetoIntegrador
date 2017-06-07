@@ -19,6 +19,10 @@ public class ProfessorServiceImpl implements ProfessorService{
 		// TODO Auto-generated method stub
 		return profRepo.findById(id);
 	}
+	
+	public Professor buscarPorUsuario(Long id) { 
+		return profRepo.findByUser(id);
+	}
 
 	public List<Professor> buscarTodos() {
 		// TODO Auto-generated method stub

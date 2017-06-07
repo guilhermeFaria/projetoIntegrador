@@ -7,13 +7,11 @@ export class Webservice {
     _http: Http;
     _headers: Headers;
     _url: string = 'http://localhost:8080/projetoIntegrador/';
-    _token: string = '';
 
     constructor(http: Http, responseOptions: ResponseOptions) {
         this._http = http;
         this._headers = new Headers();
         this._headers.append('Content-Type', 'application/json');
-        this._headers.append('Authorization', sessionStorage.getItem('Authorization'));
     }
 
     getWebserviceUrl() {
@@ -26,7 +24,10 @@ export class Webservice {
     }
 
     get(url: string): Observable<Response> {
-        return this._http.get(this._url + url);
+        if(sessionStorage.getItem('Authorization')) {
+            this._headers.set('Authorization', sessionStorage.getItem('Authorization'));
+        }
+        return this._http.get(this._url + url, { headers: this._headers });
     }
 
     put(url: string, obj: string): Observable<Response> {

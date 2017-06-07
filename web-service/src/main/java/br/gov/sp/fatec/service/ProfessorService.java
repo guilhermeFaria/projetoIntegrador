@@ -6,7 +6,9 @@ import br.gov.sp.fatec.model.Professor;
 
 public interface ProfessorService {
 	public Professor buscar(Long id);
+	public Professor buscarPorUsuario(Long id);
 	public List<Professor> buscarTodos();
 	public Professor salvar(Professor professor);
+	
 
 }

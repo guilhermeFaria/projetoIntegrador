@@ -6,6 +6,7 @@ import { RouterModule, Routes  }  from '@angular/router';
 import 'rxjs/add/operator/map';
 
 import { LoginModule } from './login/login.module';
+import { ListaPresencaModule } from './lista-presenca/lista-presenca.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -24,7 +25,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     Erro404Component,
-    ListaPresencaComponent,
     DisciplinaComponent
   ],
   imports: [
@@ -32,6 +32,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     LoginModule,
+    ListaPresencaModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

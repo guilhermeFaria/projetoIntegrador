@@ -18,7 +18,7 @@ def generate_script(datas, disciplina):
 	global id_presenca
 	for dia in datas:
 		for aluno in range(1,6):
-			print('insert into academiq.presenca values(' + str(id_presenca) + ', \'' + dia + '\',true,' + str(aluno) + ', ' + str(disciplina) + ');')
+			print('insert into academiq.presenca values(' + str(id_presenca) + ', \'' + dia + '\', null, ' + str(aluno) + ', ' + str(disciplina) + ');')
 			id_presenca += 1
 
 
