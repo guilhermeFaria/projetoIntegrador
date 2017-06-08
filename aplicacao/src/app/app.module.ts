@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { LoginModule } from './login/login.module';
 import { ListaPresencaModule } from './lista-presenca/lista-presenca.module';
+import { DisciplinaModule } from './disciplina/disciplina.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -24,8 +25,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    Erro404Component,
-    DisciplinaComponent
+    Erro404Component
   ],
   imports: [
     BrowserModule,
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     HttpModule,
     LoginModule,
     ListaPresencaModule,
+    DisciplinaModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
