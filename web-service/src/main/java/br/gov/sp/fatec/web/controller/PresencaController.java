@@ -57,10 +57,12 @@ public class PresencaController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Presenca save(@RequestBody Presenca presenca, HttpServletRequest request, HttpServletResponse response) {
-		presenca = presencaService.salvar(presenca);
-		response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/presenca/getById?id=" + presenca.getId());
-		return presenca;
+	public List<Presenca> save(@RequestBody List<Presenca> presencas, HttpServletRequest request, HttpServletResponse response) {
+		for(Presenca p:presencas){
+			presencaService.salvar(p);
+		}
+		//response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/presenca/getById?id=" + presenca.getId());
+		return presencas;
 	}
 	
 	@PreAuthorize("hasRole('ROLE_PROF')")
