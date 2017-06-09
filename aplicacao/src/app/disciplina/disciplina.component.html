@@ -3,7 +3,7 @@
 
   <h1>Escolha uma disciplina</h1>
 
-  <ul *ngFor="let d of disciplinas">
-    <li [routerLink]="['/presencas/', d.id]">{{ d.nome }}</li>
+  <ul>
+    <li *ngFor="let d of disciplinas" [routerLink]="['/chamada/', d.id]">{{ d.nome }}</li>
   </ul>
 </section>

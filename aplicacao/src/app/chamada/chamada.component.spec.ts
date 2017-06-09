@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListaPresencaComponent } from './lista-presenca.component';
+import { ChamadaComponent } from './chamada.component';
 
-describe('ListaPresencaComponent', () => {
-  let component: ListaPresencaComponent;
-  let fixture: ComponentFixture<ListaPresencaComponent>;
+describe('ChamadaComponent', () => {
+  let component: ChamadaComponent;
+  let fixture: ComponentFixture<ChamadaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListaPresencaComponent ]
+      declarations: [ ChamadaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListaPresencaComponent);
+    fixture = TestBed.createComponent(ChamadaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

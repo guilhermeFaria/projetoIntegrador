@@ -1,5 +1,5 @@
-<section>
-	
+<section *ngIf="professor">
+	<h2>{{ disciplina?.nome }}</h2>
 	<label for="data">Data: </label>
 	<input type="text" id="data" name="data"
 			[ngModel]="helper.format(data)"
@@ -19,7 +19,7 @@
 		</tr>
 	</table>
 
-	<h3 *ngIf="presencas && !presencas.length">Não há aulas em {{ helper.format(data) }}</h3>
+	<h4 *ngIf="presencas && !presencas.length">Não há aulas em {{ helper.format(data) }}</h4>
 
 	<button (click)="salvar()">Salvar</button>
 

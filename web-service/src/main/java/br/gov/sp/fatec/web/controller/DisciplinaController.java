@@ -57,6 +57,7 @@ public class DisciplinaController {
 		response.addHeader("Location", request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/disciplina/getById?id=" + disciplina.getId());
 		return disciplina;
 	}
+	
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/get/professor/{id}")
 	public ResponseEntity<Collection<Disciplina>> getDisciplina(@PathVariable(value="id") Long id){

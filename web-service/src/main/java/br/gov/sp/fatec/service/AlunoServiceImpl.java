@@ -37,4 +37,9 @@ public class AlunoServiceImpl implements AlunoService {
 
 	}
 
+	public Aluno buscarPorUsuario(Long id) {
+		// TODO Auto-generated method stub
+		return alunoRepo.getByUsuario(id);
+	}
+
 }

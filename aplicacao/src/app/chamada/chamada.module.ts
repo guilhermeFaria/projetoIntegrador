@@ -3,24 +3,24 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Helper } from '../helpers/helper';
-import { ListaPresencaService } from '../service/lista-presenca.service';
+import { ChamadaService } from '../service/chamada.service';
 import { ProfessorService } from '../service/professor.service';
 import { DisciplinaService } from '../service/disciplina.service';
 import { Webservice } from '../helpers/webservice';
 
-import { ListaPresencaComponent } from './lista-presenca.component';
+import { ChamadaComponent } from './chamada.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule
   ],
-  declarations: [ ListaPresencaComponent ],
-  providers: [ ListaPresencaService, 
+  declarations: [ ChamadaComponent ],
+  providers: [ ChamadaService, 
                 ProfessorService,
                 DisciplinaService,
                 Webservice,
                 Helper
               ]
 })
-export class ListaPresencaModule { }
+export class ChamadaModule { }

@@ -10,5 +10,6 @@ public interface AlunoService {
 	public List<Aluno> buscar(String nome);
 	public List<Aluno> buscarTodos();
 	public Aluno salvar(Aluno aluno);
+	public Aluno buscarPorUsuario(Long id);
 
 }
