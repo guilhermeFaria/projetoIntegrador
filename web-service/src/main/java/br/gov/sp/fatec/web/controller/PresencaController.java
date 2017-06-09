@@ -47,7 +47,7 @@ public class PresencaController {
 	
 	}
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
-	@RequestMapping(value = "/list/{disciplina}/{data}")
+	@RequestMapping(value = "/get/{disciplina}/{data}")
 	public ResponseEntity<Collection<Presenca>> getAll(@PathVariable(value="disciplina") Long disciplina, @PathVariable(value="data") Long dataMS){
 		Date data = new Date(dataMS);
 		return new ResponseEntity<Collection<Presenca>>(presencaService.buscarTodos(disciplina, data),HttpStatus.OK);
