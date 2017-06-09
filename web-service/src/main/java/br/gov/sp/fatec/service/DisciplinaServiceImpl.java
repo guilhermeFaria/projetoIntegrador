@@ -36,5 +36,10 @@ public class DisciplinaServiceImpl implements DisciplinaService {
 		// TODO Auto-generated method stub
 		return disciplinaRepo.findByProfessor(id);
 	}
+	
+	public List<Disciplina> buscarPorAluno(Long id) {
+		// TODO Auto-generated method stub
+		return disciplinaRepo.findByProfessor(id);
+	}
 
 }

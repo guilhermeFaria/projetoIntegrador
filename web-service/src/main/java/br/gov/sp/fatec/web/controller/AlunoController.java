@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import br.gov.sp.fatec.model.Aluno;
+import br.gov.sp.fatec.model.Professor;
 import br.gov.sp.fatec.service.AlunoService;
 import br.gov.sp.fatec.view.View;
 
@@ -29,6 +30,7 @@ public class AlunoController {
 	
 	@Autowired
 	private AlunoService alunoService;
+	
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	@RequestMapping(value = "/get/{nome}")
 	public ResponseEntity<Collection<Aluno>> buscarPorNome(@PathVariable("nome") String nome){
@@ -41,6 +43,17 @@ public class AlunoController {
 	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_PROF')")
 	public ResponseEntity<Aluno> get(@PathVariable(value="id") Long id){
 		Aluno aluno = alunoService.buscar(id);
+		if(aluno == null){
+			return new ResponseEntity<Aluno>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Aluno>(aluno,HttpStatus.OK);
+	
+	}
+	
+	@RequestMapping(value = "/get/usuario/{id}")
+	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ALUNO')")
+	public ResponseEntity<Aluno> getByUser(@PathVariable(value="id") Long id){
+		Aluno aluno = alunoService.buscarPorUsuario(id);
 		if(aluno == null){
 			return new ResponseEntity<Aluno>(HttpStatus.NOT_FOUND);
 		}
