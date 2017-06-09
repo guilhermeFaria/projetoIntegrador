@@ -12,7 +12,7 @@ export class ChamadaService {
 
     listar(disciplina: number, data: Date): Observable<Presenca[]>  {
         let usuario: Usuario = JSON.parse(sessionStorage.getItem('usuario'));
-        let path: string ='presenca/list/' + disciplina + '/' + data.getTime();
+        let path: string ='presenca/get/' + disciplina + '/' + data.getTime();
 
         return this.webservice.get(path)
             .map(res => res.json());

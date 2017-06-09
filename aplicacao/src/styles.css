@@ -17,10 +17,10 @@ input {
     border: 1px solid #EDEDED;
     border-radius: 7px;
     min-width: 100px;
-    padding: 10px;
+    padding: 5px 10px !important;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="password"] {
     height: 30px;
 }
 
@@ -35,6 +35,6 @@ ul {
 ul li {
     border-bottom: 1px solid #ededed;
     list-style: none;
-    padding: 10px;
+    padding: 15px;
     width: 100%;
 }

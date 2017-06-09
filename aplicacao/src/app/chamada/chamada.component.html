@@ -1,5 +1,5 @@
-<section>
-	<h2>{{ disciplina.nome }}</h2>
+<section *ngIf="professor">
+	<h2>{{ disciplina?.nome }}</h2>
 	<label for="data">Data: </label>
 	<input type="text" id="data" name="data"
 			[ngModel]="helper.format(data)"
