@@ -18,7 +18,7 @@ import { DisciplinaComponent } from './disciplina/disciplina.component';
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'disciplinas', component: DisciplinaComponent },
-  { path: 'presencas', component: ListaPresencaComponent },
+  { path: 'presencas/:id', component: ListaPresencaComponent },
   { path: '**', component: Erro404Component }
 ];
 

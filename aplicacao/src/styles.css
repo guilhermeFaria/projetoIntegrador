@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+button {
+    background: -webkit-linear-gradient(to bottom, #66CCEE, #55AAEE); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom, #66CCEE, #55AAEE); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom, #66CCEE, #55AAEE); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #66CCEE, #55AAEE); /* Standard syntax */
+    border: none;
+    border-radius: 7px;
+    color: white;
+    margin: 10px 0;
+    min-width: 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+input {
+    border: 1px solid #EDEDED;
+    border-radius: 7px;
+    min-width: 100px;
+    padding: 10px;
+}
+
+section {
+    padding: 25px;
+}

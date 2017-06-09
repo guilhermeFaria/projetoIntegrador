@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+import { Helper } from '../helpers/helper';
 import { Disciplina } from '../model/disciplina';
 import { Professor } from '../model/professor';
 import { Presenca } from '../model/presenca';
@@ -14,25 +16,39 @@ import { DisciplinaService } from '../service/disciplina.service';
 })
 export class ListaPresencaComponent {
 
-  data: Date = new Date(2017, 5, 7);
-  disciplina: Disciplina[];
+  data: Date = new Date();
+  disciplina: Disciplina;
   professor: Professor;
   presencas: Presenca[];
 
   constructor(private listaPresencaService: ListaPresencaService,
               private professorService: ProfessorService,
-              private disciplinaService: DisciplinaService) {
+              private disciplinaService: DisciplinaService,
+              private activatedRoute: ActivatedRoute,
+              private helper: Helper) {
                 
-        professorService.buscar().subscribe(prof => {
-            this.professor = prof;
+        this.activatedRoute.params.subscribe(params => {
+            let id = params['id'];
 
-            disciplinaService.buscarPorProfessor(this.professor).subscribe(disc => {
-                this.disciplina = disc;
+            if(id) {
+                disciplinaService.buscar(id).subscribe(disc => {
+                    this.disciplina = disc;
+                    this.professor = this.disciplina.professor;
 
-                listaPresencaService.listar(this.disciplina[0].id, this.data).subscribe(presencas => this.presencas = presencas);
-            });
+                    this.listarPresenca();
+                });
+            }
         });
 
+    }
+
+    listarPresenca() {
+        this.listaPresencaService.listar(this.disciplina.id, this.data).subscribe(presencas => this.presencas = presencas);
+    }
+
+    setData(data: string) {
+        this.data = this.helper.toDate(data);
+        this.listarPresenca();
     }
 
 }

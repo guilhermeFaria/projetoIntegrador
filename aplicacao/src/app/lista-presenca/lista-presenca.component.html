@@ -1,7 +1,26 @@
+<section>
+	
+	<label for="data">Data: </label>
+	<input type="text" id="data" name="data"
+			[ngModel]="helper.format(data)"
+			(change)="setData($event.target.value)">
 
-<table *ngFor="let p of presencas">
-	<tr>
-		<td>{{ p.aluno.usuario.nome }}</td>
-		<td><input type="checkbox" [checked]="p.presente"></td>
-	</tr>
-</table>
+	<br><br>
+
+	<table *ngIf="presencas && presencas.length">
+		<tr>
+			<th>Aluno</th>
+			<th>Presença</th>
+		</tr>
+		
+		<tr *ngFor="let p of presencas">
+			<td>{{ p.aluno.usuario.nome }}</td>
+			<td><input type="checkbox" [checked]="p.presente"></td>
+		</tr>
+	</table>
+
+	<h3 *ngIf="presencas && !presencas.length">Não há aulas em {{ helper.format(data) }}</h3>
+
+	<button (click)="salvar()">Salvar</button>
+
+</section>

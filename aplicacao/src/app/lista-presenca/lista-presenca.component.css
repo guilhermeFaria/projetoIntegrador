@@ -1,0 +1,20 @@
+ul li {
+    border-bottom: 1px solid #ededed;
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ededed;
+    padding: 10px;
+}
+
+td:first-child {
+    width: 250px;
+}
+
+td:last-child {
+    width: 50px;
+    text-align: center;
+}

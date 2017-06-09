@@ -1,7 +1,9 @@
-<span *ngIf="professor">Olá {{ professor.usuario.nome }}</span>
+<section>
+  <span *ngIf="professor">Olá {{ professor.usuario.nome }}</span>
 
-<h1>Escolha uma disciplina</h1>
+  <h1>Escolha uma disciplina</h1>
 
-<ul *ngFor="let d of disciplinas">
-  <li [routerLink]="['/']">{{ d.nome }}</li>
-</ul>
+  <ul *ngFor="let d of disciplinas">
+    <li [routerLink]="['/presencas/', d.id]">{{ d.nome }}</li>
+  </ul>
+</section>
