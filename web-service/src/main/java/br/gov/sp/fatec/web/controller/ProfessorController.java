@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ public class ProfessorController {
 	@Autowired
 	private ProfessorService professorService;
 
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/get/{id}")
 	public ResponseEntity<Professor> get(@PathVariable(value="id") Long id){
 		Professor professor = professorService.buscar(id);
@@ -38,6 +40,7 @@ public class ProfessorController {
 	
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/get/usuario/{id}")
 	public ResponseEntity<Professor> getByUser(@PathVariable(value="id") Long id){
 		Professor professor = professorService.buscarPorUsuario(id);
@@ -48,12 +51,13 @@ public class ProfessorController {
 	
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/list")
 	public ResponseEntity<Collection<Professor>> getAll(){
 		return new ResponseEntity<Collection<Professor>>(professorService.buscarTodos(),HttpStatus.OK);
 	}
 	
-	
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@JsonView(View.All.class)
 	@ResponseStatus(HttpStatus.CREATED)
