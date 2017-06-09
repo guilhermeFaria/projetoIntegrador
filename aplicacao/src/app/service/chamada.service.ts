@@ -6,7 +6,7 @@ import { Presenca } from '../model/presenca';
 import { Usuario } from '../model/usuario';
 
 @Injectable()
-export class ListaPresencaService {
+export class ChamadaService {
 
   constructor(private webservice: Webservice) {}
 

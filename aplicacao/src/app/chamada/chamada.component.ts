@@ -5,30 +5,30 @@ import { Helper } from '../helpers/helper';
 import { Disciplina } from '../model/disciplina';
 import { Professor } from '../model/professor';
 import { Presenca } from '../model/presenca';
-import { ListaPresencaService } from '../service/lista-presenca.service';
+import { ChamadaService } from '../service/chamada.service';
 import { ProfessorService } from '../service/professor.service';
 import { DisciplinaService } from '../service/disciplina.service';
 
 @Component({
-  selector: 'app-lista-presenca',
-  templateUrl: './lista-presenca.component.html',
-  styleUrls: ['./lista-presenca.component.css']
+  selector: 'app-chamada',
+  templateUrl: './chamada.component.html',
+  styleUrls: ['./chamada.component.css']
 })
-export class ListaPresencaComponent {
+export class ChamadaComponent {
 
   data: Date = new Date();
   disciplina: Disciplina;
   professor: Professor;
   presencas: Presenca[];
 
-  constructor(private listaPresencaService: ListaPresencaService,
+  constructor(private chamadaService: ChamadaService,
               private professorService: ProfessorService,
               private disciplinaService: DisciplinaService,
               private activatedRoute: ActivatedRoute,
               private helper: Helper) {
                 
         this.activatedRoute.params.subscribe(params => {
-            let id = params['id'];
+            let id = params['id_disciplina'];
 
             if(id) {
                 disciplinaService.buscar(id).subscribe(disc => {
@@ -43,7 +43,7 @@ export class ListaPresencaComponent {
     }
 
     listarPresenca() {
-        this.listaPresencaService.listar(this.disciplina.id, this.data).subscribe(presencas => this.presencas = presencas);
+        this.chamadaService.listar(this.disciplina.id, this.data).subscribe(presencas => this.presencas = presencas);
     }
 
     setData(data: string) {

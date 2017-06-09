@@ -20,6 +20,21 @@ input {
     padding: 10px;
 }
 
+input[type="text"], input[type="password"] {
+    height: 30px;
+}
+
 section {
     padding: 25px;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    border-bottom: 1px solid #ededed;
+    list-style: none;
+    padding: 10px;
+    width: 100%;
 }

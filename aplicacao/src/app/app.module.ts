@@ -6,19 +6,22 @@ import { RouterModule, Routes  }  from '@angular/router';
 import 'rxjs/add/operator/map';
 
 import { LoginModule } from './login/login.module';
-import { ListaPresencaModule } from './lista-presenca/lista-presenca.module';
+import { ChamadaModule } from './chamada/chamada.module';
 import { DisciplinaModule } from './disciplina/disciplina.module';
+import { PresencaModule } from './presenca/presenca.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { Erro404Component } from './erro404/erro404.component';
-import { ListaPresencaComponent } from './lista-presenca/lista-presenca.component';
+import { ChamadaComponent } from './chamada/chamada.component';
 import { DisciplinaComponent } from './disciplina/disciplina.component';
+import { PresencaComponent } from './presenca/presenca.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'disciplinas', component: DisciplinaComponent },
-  { path: 'presencas/:id', component: ListaPresencaComponent },
+  { path: 'chamada/:id_disciplina', component: ChamadaComponent },
+  { path: 'presenca', component: PresencaComponent },
   { path: '**', component: Erro404Component }
 ];
 
@@ -32,8 +35,9 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     LoginModule,
-    ListaPresencaModule,
+    ChamadaModule,
     DisciplinaModule,
+    PresencaModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
