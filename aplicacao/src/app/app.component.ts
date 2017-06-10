@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'app works!';
-
+  
   constructor(private router: Router) {}
 
+  logado(): boolean {
+    return sessionStorage.getItem('usuario') != null;
+  }
   logout(event) {
       event.preventDefault();
       sessionStorage.removeItem('usuario');

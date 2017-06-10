@@ -14,7 +14,16 @@ export class LoginComponent {
   usuario: Usuario = new Usuario();
   login: Login = new Login();
 
-  constructor(private service: LoginService, private router: Router) {}
+  constructor(private service: LoginService, private router: Router) {
+    let user: Usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    if(user) {
+      if(user.autorizacoes[0].autorizacao == 'ROLE_ALUNO') {
+        this.router.navigateByUrl('/presenca');
+      } else {
+        this.router.navigateByUrl('/disciplinas');
+      }
+    }
+  }
 
   logar(event) {
       event.preventDefault();
