@@ -1,7 +1,17 @@
 <section>
-    <h2>Lista de presencas</h2>
+    <h2>Lista de presenças</h2>
 
-    <ul>
-        <li *ngFor="let d of disciplinas">{{ d.nome }}</li>
-    </ul>
+    <table *ngIf="disciplinas && disciplinas.length">
+		<tr>
+			<th>Aluno</th>
+			<th>Presenças</th>
+            <th>Faltas</th>
+		</tr>
+		
+		<tr *ngFor="let d of disciplinas">
+			<td>{{ d.nome }}</td>
+			<td>{{ presencas[disciplinas.indexOf(d)]}} </td>
+            <td>{{ faltas[disciplinas.indexOf(d)]}} </td>
+		</tr>
+	</table>
 </section>

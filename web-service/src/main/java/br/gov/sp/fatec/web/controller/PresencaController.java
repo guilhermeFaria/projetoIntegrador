@@ -88,7 +88,7 @@ public class PresencaController {
 	
 	@PreAuthorize("hasRole('ROLE_ALUNO')")
 	@RequestMapping(value = "/get/faltas/{idAluno}/{idDisciplina}")
-	public ResponseEntity<Long> getFaltas(@PathVariable(value="idAlunno") Long idAluno,@PathVariable(value="idDisciplina")Long idDisciplina){
+	public ResponseEntity<Long> getFaltas(@PathVariable(value="idAluno") Long idAluno,@PathVariable(value="idDisciplina")Long idDisciplina){
 		Long faltas = presencaService.qtdePresencaFalta(idAluno, idDisciplina, false);
 		if(faltas == null){
 			return new ResponseEntity<Long>(HttpStatus.NOT_FOUND);
@@ -99,7 +99,7 @@ public class PresencaController {
 	
 	@PreAuthorize("hasRole('ROLE_ALUNO')")
 	@RequestMapping(value = "/get/presente/{idAluno}/{idDisciplina}")
-	public ResponseEntity<Long> getPresencas(@PathVariable(value="idAlunno") Long idAluno,@PathVariable(value="idDisciplina")Long idDisciplina){
+	public ResponseEntity<Long> getPresencas(@PathVariable(value="idAluno") Long idAluno,@PathVariable(value="idDisciplina")Long idDisciplina){
 		Long presencas = presencaService.qtdePresencaFalta(idAluno, idDisciplina, true);
 		if(presencas == null){
 			return new ResponseEntity<Long>(HttpStatus.NOT_FOUND);

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { Helper } from '../helpers/helper';
 import { ChamadaService } from '../service/chamada.service';
@@ -13,7 +14,8 @@ import { ChamadaComponent } from './chamada.component';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [ ChamadaComponent ],
   providers: [ ChamadaService, 

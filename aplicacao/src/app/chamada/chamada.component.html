@@ -1,26 +1,32 @@
 <section *ngIf="professor">
 	<h2>{{ disciplina?.nome }}</h2>
-	<label for="data">Data: </label>
-	<input type="text" id="data" name="data"
+
+	<div class="center">
+		<label for="data">Data: </label>
+		<input type="text" id="data" name="data"
 			[ngModel]="helper.format(data)"
 			(change)="setData($event.target.value)">
 
-	<br><br>
+		<br><br>
 
-	<table *ngIf="presencas && presencas.length">
-		<tr>
-			<th>Aluno</th>
-			<th>Presença</th>
-		</tr>
-		
-		<tr *ngFor="let p of presencas">
-			<td>{{ p.aluno.usuario.nome }}</td>
-			<td><input type="checkbox" [checked]="p.presente"></td>
-		</tr>
-	</table>
+		<table *ngIf="presencas && presencas.length">
+			<tr>
+				<th>Aluno</th>
+				<th>Presença</th>
+			</tr>
+			
+			<tr *ngFor="let p of presencas">
+				<td>{{ p.aluno.usuario.nome }}</td>
+				<td><input type="checkbox" [(ngModel)]="p.presente"></td>
+			</tr>
+		</table>
 
-	<h4 *ngIf="presencas && !presencas.length">Não há aulas em {{ helper.format(data) }}</h4>
+		<h4 *ngIf="presencas && !presencas.length">Não há aulas em {{ helper.format(data) }}</h4>
 
-	<button (click)="salvar()">Salvar</button>
+		<br>
+
+		<button class="voltar" [routerLink]="['/disciplinas']">Voltar</button> <button (click)="salvar()">Salvar</button>
+
+	</div>
 
 </section>

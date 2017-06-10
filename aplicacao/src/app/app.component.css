@@ -1,0 +1,8 @@
+.sair {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: #efefef;
+    color: #333;
+    border: 1px solid #ededed;
+}

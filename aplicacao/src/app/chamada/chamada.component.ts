@@ -51,4 +51,13 @@ export class ChamadaComponent {
         this.listarPresenca();
     }
 
+    salvar() {
+        //this.presencas.forEach(p => console.log(p.data));
+        //console.log(JSON.stringify(this.presencas));
+        this.chamadaService.salvar(this.presencas).subscribe(presencas => {
+            alert("Salvo com sucesso");
+            this.presencas = presencas;
+        });
+    }
+
 }

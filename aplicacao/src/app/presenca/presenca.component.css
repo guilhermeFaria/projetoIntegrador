@@ -1,0 +1,9 @@
+td {
+    width: 100px;
+    text-align: center;
+}
+
+td:first-child {
+    width: auto;
+    text-align: left;
+}
